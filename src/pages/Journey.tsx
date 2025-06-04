@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -110,21 +109,22 @@ const Journey = () => {
               
               <div className="grid gap-4">
                 <Label>Optimization Priority</Label>
-                <TabsList className="grid grid-cols-4 w-full">
-                  {priorityOptions.map((option) => (
-                    <TabsTrigger 
-                      key={option.value}
-                      value={option.value}
-                      onClick={() => setPriorityPreference(option.value)}
-                      className={priorityPreference === option.value ? "bg-transit-teal text-white" : ""}
-                    >
-                      <div className="flex flex-col items-center space-y-1">
-                        {option.icon}
-                        <span>{option.label}</span>
-                      </div>
-                    </TabsTrigger>
-                  ))}
-                </TabsList>
+                <Tabs value={priorityPreference} onValueChange={setPriorityPreference}>
+                  <TabsList className="grid grid-cols-4 w-full">
+                    {priorityOptions.map((option) => (
+                      <TabsTrigger 
+                        key={option.value}
+                        value={option.value}
+                        className="data-[state=active]:bg-transit-teal data-[state=active]:text-white"
+                      >
+                        <div className="flex flex-col items-center space-y-1">
+                          {option.icon}
+                          <span>{option.label}</span>
+                        </div>
+                      </TabsTrigger>
+                    ))}
+                  </TabsList>
+                </Tabs>
               </div>
               
               <div className="grid gap-4">
